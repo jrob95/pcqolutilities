@@ -1,0 +1,18 @@
+Package: pcqolutilities
+Type: Package
+Title: PC-QoL Utilities
+Version: 0.1.0
+Author: Jack Roberts
+Maintainer: The package maintainer <jack.roberts@connect.qut.edu.au>
+Description: Recode PC-QoL responses and estimate health utilities for responses.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    stringr,
+    tibble,
+    tidyr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
