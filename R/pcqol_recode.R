@@ -1,5 +1,3 @@
-
-
 #' @export
 # recode the given data
 pcqol_recode <- function(data,
