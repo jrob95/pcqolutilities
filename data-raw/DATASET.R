@@ -37,3 +37,4 @@ recoded2 <- data.frame(
 )
 
 usethis::use_data(raw, recoded1, recoded2, overwrite = TRUE)
+

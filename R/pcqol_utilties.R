@@ -1,3 +1,5 @@
+
+#' @export
 # Estimate utilities
 pcqol_utilities <- function(data,
                             recode = FALSE,
@@ -14,11 +16,11 @@ pcqol_utilities <- function(data,
 
   data <- data |>
     tibble::rowid_to_column() |>
-    tidyr::pivot_longer(ends_with("Rec")) |>
-    dplyr::mutate(name = string::str_remove(name, "Rec")) |>
-    dplyr::left_join(coefs, join_by(name == item, value == level_num)) |>
+    tidyr::pivot_longer(tidyr::ends_with("Rec")) |>
+    dplyr::mutate("name" = string::str_remove("name", "Rec")) |>
+    dplyr::left_join(coefs, dplyr::join_by("name" == "item", "value" == "level_num")) |>
     # remove evidence of coefficients
     dplyr::select(-names(coefs)) |>
-    dplyr::group_by(rowid) |>
+    dplyr::group_by("rowid") |>
     dplyr::summarise(utility = 1 - sum(coef))
 }
