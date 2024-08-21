@@ -1,5 +1,5 @@
 # coefficients
-coefs <- readRDS("data/gcmOnDoWbtFmodel.rds") |>
+coefs <- readRDS("data/gcmOnDoWbtFmodel.rda") |>
   mutate(
     item = substr(attribute, 1, 5),
     level = substr(attribute, 6, length(attribute)),
@@ -11,4 +11,4 @@ coefs <- readRDS("data/gcmOnDoWbtFmodel.rds") |>
     )
   )
 
-saveRDS(coefs, "data/gcmOnDoWbtFmodelClean.rds")
+saveRDS(coefs, "data/gcmOnDoWbtFmodelClean.rda")

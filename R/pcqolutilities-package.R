@@ -2,6 +2,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom dplyr :=
+#' @importFrom rlang `:=` sym !!
 ## usethis namespace: end
 NULL

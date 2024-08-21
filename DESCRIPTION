@@ -1,10 +1,13 @@
 Package: pcqolutilities
 Type: Package
-Title: PC-QoL Utilities
+Title: Estimate Parent-Proxy Child Cough Specific Quality of Life Utilities
 Version: 0.1.0
-Author: Jack Roberts
+Authors@R: person("Jack", "Roberts", email = "jack.roberts@connect.qut.edu.au",
+  role = c("aut", "cre"))
+URL: 
+BugReports: 
 Maintainer: The package maintainer <jack.roberts@connect.qut.edu.au>
-Description: Recode PC-QoL responses and estimate health utilities for responses.
+Description: Recode Parent-Proxy Child CoughSpecific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

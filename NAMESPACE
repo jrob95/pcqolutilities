@@ -2,3 +2,6 @@
 
 export(pcqol_recode)
 export(pcqol_utilities)
+importFrom(rlang,"!!")
+importFrom(rlang,`:=`)
+importFrom(rlang,sym)
