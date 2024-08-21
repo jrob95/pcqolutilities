@@ -4,8 +4,8 @@ Title: Estimate Parent-Proxy Child Cough Specific Quality of Life Utilities
 Version: 0.1.0
 Authors@R: person("Jack", "Roberts", email = "jack.roberts@connect.qut.edu.au",
   role = c("aut", "cre"))
-URL: 
-BugReports: 
+URL: https://github.com/jrob95/pcqolutilities
+BugReports: https://github.com/jrob95/pcqolutilities/issues
 Maintainer: The package maintainer <jack.roberts@connect.qut.edu.au>
 Description: Recode Parent-Proxy Child CoughSpecific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
 License: MIT + file LICENSE
