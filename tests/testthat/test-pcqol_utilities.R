@@ -1,14 +1,14 @@
 # Test correct output
 
 test_that("Expected response on from raw dataframe standard settings", {
-  expect_equal(pcqol_utilities(raw), utility_out)
+  expect_equal(pcqol_utilities(pcqol_raw), pcqol_utility_out)
 })
 
 
 test_that("Expected response on from raw dataframe non-standard columns names",
           {
             expect_equal(pcqol_utilities(
-              raw2,
+              pcqol_raw2,
               colnames = c(
                 upset = "ups",
                 scare = "sca",
@@ -17,7 +17,7 @@ test_that("Expected response on from raw dataframe non-standard columns names",
                 leada = "lnl",
                 awake = "awa"
               )
-            ), utility_out2)
+            ), pcqol_utility_out2)
           })
 
 
@@ -25,7 +25,7 @@ test_that("Expected response on from raw dataframe non-standard columns names",
 test_that("Expected response on from raw dataframe non-standard column names",
           {
             expect_error(pcqol_utilities(
-              raw2,
+              pcqol_raw2,
               colnames = c(
                 upset = "ups",
                 scare = "sca",
@@ -39,7 +39,7 @@ test_that("Expected response on from raw dataframe non-standard column names",
 test_that("Expected response on from raw dataframe non-standard columns names",
           {
             expect_error(pcqol_utilities(
-              "raw2",
+              "pcqol_raw2",
               colnames = c(
                 upset = "ups",
                 scare = "sca",
@@ -48,5 +48,5 @@ test_that("Expected response on from raw dataframe non-standard columns names",
                 leada = "lnl",
                 awake = "awa"
               )
-            ), regexp = "\"raw2\" is not a data frame, or not coercible to one.")
+            ), regexp = "\"pcqol_raw2\" is not a data frame, or not coercible to one.")
           })

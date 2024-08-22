@@ -1,6 +1,25 @@
-
+#' Estimate utilities
+#'
+#' @param data A data frame containing fields `upset`, `scare`, `overp`, `leave`, `leada`, `awake`, or fields specified in `colnames`.
+#' @param recode Do the columns need to be recoded, from the 1-7 Likert scale, to the 1-4 Likert scale.
+#' @param colnames A named character vector of fields of interest.
+#' @param value_set A character from which value set should utilities be estimated.
+#' @param return_df Logical. should the calculated utilities be appended to the originally input data frame.
+#'
+#' @returns A tibble of utility values, with or without original data.
+#' @examples
+#' # with a simple data frame
+#' pcqol_utilities(pcqol_raw)
+#' # a data frame with non-standard column names
+#' pcqol_utilities(pcqol_raw2,
+#' colnames = c(
+#'   upset = "ups",
+#'   scare = "sca",
+#'   overp = "ove",
+#'   leave = "lwo",
+#'   leada = "lnl",
+#'   awake = "awa"))
 #' @export
-# Estimate utilities
 pcqol_utilities <- function(data,
                             recode = TRUE,
                             colnames = c(upset = "upset", scare = "scare", overp = "overp", leave = "leave", leada = "leada", awake = "awake"),

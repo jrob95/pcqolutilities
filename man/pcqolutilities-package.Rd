@@ -4,8 +4,20 @@
 \name{pcqolutilities-package}
 \alias{pcqolutilities}
 \alias{pcqolutilities-package}
-\title{pcqolutilities: PC-QoL Utilities}
+\title{pcqolutilities: Estimate Parent-Proxy Child Cough Specific Quality of Life Utilities}
 \description{
-Recode PC-QoL responses and estimate health utilities for responses.
+Recode Parent-Proxy Child CoughSpecific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/jrob95/pcqolutilities}
+  \item Report bugs at \url{https://github.com/jrob95/pcqolutilities/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Jack Roberts \email{jack.roberts@connect.qut.edu.au}
+
 }
 \keyword{internal}

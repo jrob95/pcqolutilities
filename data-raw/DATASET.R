@@ -1,6 +1,6 @@
 ## code to prepare `DATASET` dataset goes here
 # raw for test
-raw <- data.frame(
+pcqol_raw <- data.frame(
   upset = c(1, 2, 3, 4, 5, 6, 7),
   awake = c(1, 2, 3, 4, 5, 6, 7),
   leave = c(1, 2, 3, 4, 5, 6, 7),
@@ -9,7 +9,7 @@ raw <- data.frame(
   overp = c(1, 2, 3, 4, 5, 6, 7)
 )
 
-raw2 <- data.frame(
+pcqol_raw2 <- data.frame(
   ups = c(1, 2, 3, 4, 5, 6, 7),
   awa = c(1, 2, 3, 4, 5, 6, 7),
   lwo = c(1, 2, 3, 4, 5, 6, 7),
@@ -19,7 +19,7 @@ raw2 <- data.frame(
 )
 
 # recoded for test
-recoded1 <- data.frame(
+pcqol_recoded1 <- data.frame(
   upset = c(1, 1, 2, 2, 3, 3, 4),
   awake = c(1, 2, 2, 3, 3, 4, 4),
   leave = c(1, 1, 2, 2, 2, 3, 4),
@@ -28,7 +28,7 @@ recoded1 <- data.frame(
   overp = c(1, 1, 2, 2, 3, 3, 4)
 )
 
-recoded2 <- data.frame(
+pcqol_recoded2 <- data.frame(
   upset = c(1, 2, 3, 4, 5, 6, 7),
   awake = c(1, 2, 3, 4, 5, 6, 7),
   leave = c(1, 2, 3, 4, 5, 6, 7),
@@ -44,7 +44,7 @@ recoded2 <- data.frame(
 )
 
 # output for pcqol_utilities test
-utility_out <- tibble(
+pcqol_utility_out <- tibble::tibble(
   upset = c(1, 2, 3, 4, 5, 6, 7),
   awake = c(1, 2, 3, 4, 5, 6, 7),
   leave = c(1, 2, 3, 4, 5, 6, 7),
@@ -62,7 +62,7 @@ utility_out <- tibble(
   )
 )
 
-utility_out2 <- tibble(
+pcqol_utility_out2 <- tibble::tibble(
   ups = c(1, 2, 3, 4, 5, 6, 7),
   awa = c(1, 2, 3, 4, 5, 6, 7),
   lwo = c(1, 2, 3, 4, 5, 6, 7),
@@ -81,10 +81,10 @@ utility_out2 <- tibble(
 )
 
 
-usethis::use_data(raw,
-                  recoded1,
-                  recoded2,
-                  utility_out,
-                  utility_out2,
-                  raw2,
+usethis::use_data(pcqol_raw,
+                  pcqol_recoded1,
+                  pcqol_recoded2,
+                  pcqol_utility_out,
+                  pcqol_utility_out2,
+                  pcqol_raw2,
                   overwrite = TRUE)
