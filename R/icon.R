@@ -18,3 +18,4 @@ s <- sticker(p,
              spotlight  = TRUE,
              filename="inst/figures/baseplot.png")
 s
+use_logo("inst/figures/baseplot.png", geometry = "240x278", retina = TRUE)
