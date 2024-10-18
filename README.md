@@ -23,5 +23,16 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(pcqolutilities)
 ## basic example code
+# with a simple data frame
+pcqol_utilities(pcqol_raw)
+# a data frame with non-standard column names
+pcqol_utilities(pcqol_raw2,
+ colnames = c(
+   upset = "ups",
+   scare = "sca",
+   overp = "ove",
+   leave = "lwo",
+   leada = "lnl",
+   awake = "awa"))
 ```
 
