@@ -32,9 +32,9 @@ Estimate utilities
 }
 \examples{
 # with a simple data frame
-pcqol_utilities(raw)
+pcqol_utilities(pcqol_raw)
 # a data frame with non-standard column names
-pcqol_utilities(raw2,
+pcqol_utilities(pcqol_raw2,
 colnames = c(
   upset = "ups",
   scare = "sca",

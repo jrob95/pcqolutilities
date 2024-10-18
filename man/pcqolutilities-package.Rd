@@ -6,6 +6,8 @@
 \alias{pcqolutilities-package}
 \title{pcqolutilities: Estimate Parent-Proxy Child Cough Specific Quality of Life Utilities}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Recode Parent-Proxy Child CoughSpecific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
 }
 \seealso{

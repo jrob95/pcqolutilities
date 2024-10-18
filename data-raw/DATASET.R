@@ -81,10 +81,15 @@ pcqol_utility_out2 <- tibble::tibble(
 )
 
 
-usethis::use_data(pcqol_raw,
-                  pcqol_recoded1,
+usethis::use_data(pcqol_recoded1,
                   pcqol_recoded2,
                   pcqol_utility_out,
                   pcqol_utility_out2,
+                  overwrite = TRUE,
+                  internal = TRUE)
+
+usethis::use_data(pcqol_raw,
                   pcqol_raw2,
-                  overwrite = TRUE)
+                  overwrite = TRUE,
+                  internal = FALSE)
+

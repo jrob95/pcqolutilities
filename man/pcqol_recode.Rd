@@ -31,7 +31,7 @@ available for use on its' own if the user wishes.
 }
 \examples{
 # replacing cols
-pcqol_recode(raw, replace_cols = TRUE)
+pcqol_recode(pcqol_raw, replace_cols = TRUE)
 # vs not replace cols
-pcqol_recode(raw, replace_cols = FALSE)
+pcqol_recode(pcqol_raw, replace_cols = FALSE)
 }

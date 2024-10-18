@@ -12,3 +12,6 @@ coefs <- readRDS("data/gcmOnDoWbtFmodel.rda") |>
   )
 
 saveRDS(coefs, "data/gcmOnDoWbtFmodelClean.rda")
+usethis::use_data(coefs,
+                  overwrite = TRUE,
+                  internal = TRUE)
