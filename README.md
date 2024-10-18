@@ -18,13 +18,20 @@ pak::pak("jrob95/pcqolutilities")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+You might have a data frame with columns named ready for the package
 
 ``` r
 library(pcqolutilities)
-## basic example code
+
 # with a simple data frame
 pcqol_utilities(pcqol_raw)
+```
+
+Or maybe you need to specify which columns match the PC-QoL items
+
+``` r
+library(pcqolutilities)
+
 # a data frame with non-standard column names
 pcqol_utilities(pcqol_raw2,
  colnames = c(
