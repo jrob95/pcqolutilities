@@ -12,48 +12,49 @@
 #' pcqol_utilities(pcqol_raw)
 #' # a data frame with non-standard column names
 #' pcqol_utilities(pcqol_raw2,
-#' colnames = c(
-#'   upset = "ups",
-#'   scare = "sca",
-#'   overp = "ove",
-#'   leave = "lwo",
-#'   leada = "lnl",
-#'   awake = "awa"))
+#'   colnames = c(
+#'     upset = "ups",
+#'     scare = "sca",
+#'     overp = "ove",
+#'     leave = "lwo",
+#'     leada = "lnl",
+#'     awake = "awa"
+#'   )
+#' )
 #' @export
 pcqol_utilities <- function(data,
                             recode = TRUE,
                             colnames = c(upset = "upset", scare = "scare", overp = "overp", leave = "leave", leada = "leada", awake = "awake"),
                             value_set = "roberts2024",
                             return_df = TRUE) {
-
   # Errors
   ## data frame is not a data frame
-  if(!is.data.frame(data)) {
+  if (!is.data.frame(data)) {
     stop(paste0(deparse(substitute(data)), " is not a data frame, or not coercible to one."))
   }
 
   ## colnames
-  if(length(colnames) != 6){
+  if (length(colnames) != 6) {
     stop("Incorrect number of elements in the `colnames` argument, ensure it matches the form `c(upset = \"x\", scare = \"x\", overp = \"x\", leave = \"x\", leada = \"x\", awake = \"x\")`")
   }
 
-  if(!is.character(colnames)){
+  if (!is.character(colnames)) {
     stop("`Colnames` argument is not a character vector. It should be of the form `c(upset = \"x\", scare = \"x\", overp = \"x\", leave = \"x\", leada = \"x\", awake = \"x\")`")
   }
 
   ## names in colnames
-  if(any(names(colnames) != c("upset", "scare", "overp", "leave", "leada", "awake"))){
+  if (any(names(colnames) != c("upset", "scare", "overp", "leave", "leada", "awake"))) {
     stop("`Colnames` argument is not in specified form. It should be of the form `c(upset = \"x\", scare = \"x\", overp = \"x\", leave = \"x\", leada = \"x\", awake = \"x\")`")
   }
 
   ## colnames not in dataframe
-  if(!any(colnames %in% names(data))){
-    stop(paste0("Elements given in `colnames` argument do not exist in ",deparse(substitute(data))))
+  if (!any(colnames %in% names(data))) {
+    stop(paste0("Elements given in `colnames` argument do not exist in ", deparse(substitute(data))))
   }
 
   ## value set is not included
   value_sets <- c("roberts2024")
-  if(!value_set %in% value_sets){
+  if (!value_set %in% value_sets) {
     stop("`value_set` given does not exist.")
   }
 
@@ -88,7 +89,6 @@ pcqol_utilities <- function(data,
     # change colnames to the correct names for future reference - the way I have done this I think is a bit redundant
     colnames <- names(corrected_colnames)
     names(colnames) <- names(corrected_colnames)
-
   }
 
   # add rowid to data.
@@ -104,9 +104,9 @@ pcqol_utilities <- function(data,
     tidyr::pivot_longer(as.vector(colnames)) |>
     dplyr::left_join(disutil_coefs, dplyr::join_by(name == item, value == level_num)) |>
     dplyr::group_by(rowid) |>
-    dplyr::summarise(utility = 1- sum(coef))
+    dplyr::summarise(utility = 1 - sum(coef))
 
-  if (return_df == TRUE){
+  if (return_df == TRUE) {
     data2 <- data2 |>
       dplyr::full_join(tibble::rowid_to_column(data), dplyr::join_by(rowid))
   }

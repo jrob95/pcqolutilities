@@ -14,4 +14,3 @@ test_that("Recode works, replace columns not specified", {
   print(pcqol_recoded2)
   expect_equal(pcqol_recode(pcqol_raw), pcqol_recoded2)
 })
-

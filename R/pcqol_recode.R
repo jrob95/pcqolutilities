@@ -19,7 +19,6 @@
 #' pcqol_recode(pcqol_raw, replace_cols = TRUE)
 #' # vs not replace cols
 #' pcqol_recode(pcqol_raw, replace_cols = FALSE)
-
 pcqol_recode <- function(data,
                          colnames = c(
                            upset = "upset",
@@ -30,7 +29,6 @@ pcqol_recode <- function(data,
                            awake = "awake"
                          ),
                          replace_cols = FALSE) {
-
   # errors
 
 
