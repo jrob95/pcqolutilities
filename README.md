@@ -51,13 +51,15 @@ library(pcqolutilities)
 
 # a data frame with non-standard column names
 pcqol_utilities(pcqol_raw2,
- colnames = c(
-   upset = "ups",
-   scare = "sca",
-   overp = "ove",
-   leave = "lwo",
-   leada = "lnl",
-   awake = "awa"))
+  colnames = c(
+    upset = "ups",
+    scare = "sca",
+    overp = "ove",
+    leave = "lwo",
+    leada = "lnl",
+    awake = "awa"
+  )
+)
 #> # A tibble: 7 × 7
 #>     ups   awa   lwo   lnl   sca   ove utility
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>

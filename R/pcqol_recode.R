@@ -59,6 +59,6 @@ pcqol_recode <- function(data,
       !!rlang::sym(colnames["overp"]) := recode1(!!rlang::sym(colnames["overp"]))
     )
   }
-  # return data as required
-  return(data)
+
+  data
 }

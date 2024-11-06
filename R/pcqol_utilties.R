@@ -114,8 +114,7 @@ pcqol_utilities <- function(data,
   # method if it is all in one column?
 
   # return result
-  data2 <- data2 |>
+  data2 |>
     dplyr::select(-rowid) |>
     dplyr::relocate(utility, .after = dplyr::last_col())
-  return(data2)
 }
