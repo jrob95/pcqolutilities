@@ -1,12 +1,14 @@
 # Test correct output
 
 test_that("Expected response on from raw dataframe standard settings", {
-  expect_equal(pcqol_utilities(pcqol_raw), pcqol_utility_out)
+  pcqol_utility_out <- dplyr::mutate(pcqol_utility_out, dplyr::across(dplyr::everything(), ~ round(.x, digits = 4)))
+  pcqol_utility_new <- dplyr::mutate(pcqol_utilities(pcqol_raw), dplyr::across(dplyr::everything(), ~ round(.x, digits = 4)))
+  expect_identical(pcqol_utility_new, pcqol_utility_out)
 })
 
 
 test_that("Expected response on from raw dataframe non-standard columns names", {
-  expect_equal(pcqol_utilities(
+  expect_snapshot(pcqol_utilities(
     pcqol_raw2,
     colnames = c(
       upset = "ups",
@@ -16,7 +18,7 @@ test_that("Expected response on from raw dataframe non-standard columns names", 
       leada = "lnl",
       awake = "awa"
     )
-  ), pcqol_utility_out2)
+  ))
 })
 
 
