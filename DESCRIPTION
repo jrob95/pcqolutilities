@@ -7,7 +7,7 @@ Authors@R: person("Jack", "Roberts", email = "jack.roberts@connect.qut.edu.au",
 URL: https://github.com/jrob95/pcqolutilities
 BugReports: https://github.com/jrob95/pcqolutilities/issues
 Maintainer: The package maintainer <jack.roberts@connect.qut.edu.au>
-Description: Recode Parent-Proxy Child CoughSpecific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
+Description: Recode Parent-Proxy Child Cough-specific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
