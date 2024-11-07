@@ -29,7 +29,6 @@ pcqol_recode <- function(data,
                            awake = "awake"
                          ),
                          replace_cols = FALSE) {
-
   # TODO: @returns line in docs looks to be incomplete.
 
   # validate args

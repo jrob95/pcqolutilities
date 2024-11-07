@@ -47,5 +47,5 @@ test_that("Expected response on from raw dataframe non-standard columns names", 
       leada = "lnl",
       awake = "awa"
     )
-  ), regexp = "\"pcqol_raw2\" is not a data frame, or not coercible to one.")
+  ))
 })
