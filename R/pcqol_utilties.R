@@ -12,50 +12,47 @@
 #' pcqol_utilities(pcqol_raw)
 #' # a data frame with non-standard column names
 #' pcqol_utilities(pcqol_raw2,
-#' colnames = c(
-#'   upset = "ups",
-#'   scare = "sca",
-#'   overp = "ove",
-#'   leave = "lwo",
-#'   leada = "lnl",
-#'   awake = "awa"))
+#'   colnames = c(
+#'     upset = "ups",
+#'     scare = "sca",
+#'     overp = "ove",
+#'     leave = "lwo",
+#'     leada = "lnl",
+#'     awake = "awa"
+#'   )
+#' )
 #' @export
 pcqol_utilities <- function(data,
                             recode = TRUE,
-                            colnames = c(upset = "upset", scare = "scare", overp = "overp", leave = "leave", leada = "leada", awake = "awake"),
+                            colnames = c(
+                              upset = "upset",
+                              scare = "scare",
+                              overp = "overp",
+                              leave = "leave",
+                              leada = "leada",
+                              awake = "awake"
+                            ),
                             value_set = "roberts2024",
                             return_df = TRUE) {
-
   # Errors
-  ## data frame is not a data frame
-  if(!is.data.frame(data)) {
-    stop(paste0(deparse(substitute(data)), " is not a data frame, or not coercible to one."))
-  }
-
-  ## colnames
-  if(length(colnames) != 6){
-    stop("Incorrect number of elements in the `colnames` argument, ensure it matches the form `c(upset = \"x\", scare = \"x\", overp = \"x\", leave = \"x\", leada = \"x\", awake = \"x\")`")
-  }
-
-  if(!is.character(colnames)){
-    stop("`Colnames` argument is not a character vector. It should be of the form `c(upset = \"x\", scare = \"x\", overp = \"x\", leave = \"x\", leada = \"x\", awake = \"x\")`")
-  }
-
-  ## names in colnames
-  if(any(names(colnames) != c("upset", "scare", "overp", "leave", "leada", "awake"))){
-    stop("`Colnames` argument is not in specified form. It should be of the form `c(upset = \"x\", scare = \"x\", overp = \"x\", leave = \"x\", leada = \"x\", awake = \"x\")`")
-  }
-
-  ## colnames not in dataframe
-  if(!any(colnames %in% names(data))){
-    stop(paste0("Elements given in `colnames` argument do not exist in ",deparse(substitute(data))))
-  }
+  # validate args
+  assertthat::assert_that(inherits(data, "data.frame"))
+  lapply(colnames, \(.x) assertthat::assert_that(assertthat::is.string(.x)))
+  assertthat::assert_that(assertthat::are_equal(length(colnames), 6))
+  lapply(expected_colnames(), \(.x) assertthat::assert_that(assertthat::has_name(colnames, .x)))
+  lapply(colnames, \(.x) assertthat::assert_that(assertthat::has_name(data, .x)))
+  assertthat::assert_that(assertthat::is.flag(return_df))
+  assertthat::assert_that(assertthat::is.flag(recode))
 
   ## value set is not included
-  value_sets <- c("roberts2024")
-  if(!value_set %in% value_sets){
-    stop("`value_set` given does not exist.")
+  # TODO: while there is only one value set, I think it's probably worth just removing the `value_set` arg.
+  # have changed to using match arg. If you want to add more value sets, add them to the value_set default arg vector.
+  # i.e. `value_set = c("roberts2024", "randi2025")`
+  value_set <- match.arg(value_set)
+  if (value_set == "roberts2024") {
+    disutil_coefs <- gcmOnDoWbtFmodelClean
   }
+
 
   ## values are out of range
   # If statement to check if all values in specified columns are between 1 and 7
@@ -63,13 +60,13 @@ pcqol_utilities <- function(data,
     stop("Some values are outside the range of 1 to 7, please check the coding is correct.")
   }
 
-  # Set value set - add more as/ if they become available
-  # value set from:
-  if (value_set == "roberts2024") {
-    disutil_coefs <- gcmOnDoWbtFmodelClean
-  }
+  data_orig <- data
+  # TODO: I think this statement below should be removed.
+  # Force the user to use the correct names for the arg and include assertions (as I have above) instead
 
-  data2 <- data
+  # If you really don't want to remove it, make it a separate function and call it within the pipe below to
+  # make this function a bit more readable
+
   # Correct column names if they differ from the expected ones
   if (!all(colnames == c(upset = "upset", scare = "scare", overp = "overp", leave = "leave", leada = "leada", awake = "awake"))) {
     corrected_colnames <- unlist(lapply(names(colnames), function(colname) {
@@ -81,41 +78,34 @@ pcqol_utilities <- function(data,
     }))
     names(corrected_colnames) <- names(colnames)
 
-    # Update data2 column names
-    data2 <- data2[, corrected_colnames, drop = FALSE]
-    names(data2) <- names(corrected_colnames)
+    # Update column names
+    data <- data[, corrected_colnames, drop = FALSE]
+    names(data) <- names(corrected_colnames)
 
     # change colnames to the correct names for future reference - the way I have done this I think is a bit redundant
     colnames <- names(corrected_colnames)
     names(colnames) <- names(corrected_colnames)
-
   }
 
-  # add rowid to data.
-  data2 <- tibble::rowid_to_column(data2)
-
-  # recode according to https://doi.org/10.1007/s11136-024-03652-w
-  if (recode == TRUE) {
-    data2 <- pcqol_recode(data2, colnames = colnames, replace_cols = TRUE)
-  }
-
-  # make transformations.
-  data2 <- data2 |>
+  data |>
+    tibble::rowid_to_column() |>
+    (\(data) {
+      # recode according to https://doi.org/10.1007/s11136-024-03652-w
+      if (recode) {
+        data <- pcqol_recode(data, colnames = colnames, replace_cols = TRUE)
+      }
+      data
+    })() |>
     tidyr::pivot_longer(as.vector(colnames)) |>
     dplyr::left_join(disutil_coefs, dplyr::join_by(name == item, value == level_num)) |>
     dplyr::group_by(rowid) |>
-    dplyr::summarise(utility = 1- sum(coef))
-
-  if (return_df == TRUE){
-    data2 <- data2 |>
-      dplyr::full_join(tibble::rowid_to_column(data), dplyr::join_by(rowid))
-  }
-
-  # method if it is all in one column?
-
-  # return result
-  data2 <- data2 |>
+    dplyr::summarise(utility = 1 - sum(coef)) |>
+    (\(data) {
+      if (return_df) {
+        data <- dplyr::full_join(data, tibble::rowid_to_column(data_orig), dplyr::join_by(rowid))
+      }
+      data
+    })() |>
     dplyr::select(-rowid) |>
     dplyr::relocate(utility, .after = dplyr::last_col())
-  return(data2)
 }

@@ -2,6 +2,16 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom rlang `:=` sym !!
 ## usethis namespace: end
 NULL
+
+utils::globalVariables(c(
+  "name",
+  ":=",
+  "value",
+  "level_num",
+  "rowid",
+  "utility",
+  "item",
+  "coef"
+))

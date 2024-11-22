@@ -12,21 +12,21 @@ pcqol_recode(
 )
 }
 \arguments{
-\item{data}{Input data. should be either a dataframe or tibble object.}
+\item{data}{Input data. should be either a `data.frame` or tibble object.}
 
 \item{colnames}{A list contain the name bindings for each PC-QoL item}
 
 \item{replace_cols}{replace columns or create new columns?
-* `TRUE` (default): columns will be replaced
-* `FALSE`: new columns will be appended on to the dataframe.}
+* `TRUE`: columns will be replaced
+* `FALSE`(default): new columns will be appended on to the `data.frame`}
 }
 \value{
-A dataframe with each of the recoded fields, either where columns
+A `data.frame` with each of the recoded fields, either where columns
   replaced by recoded, or in addition to the
 }
 \description{
 `pcqol_recode()` recodes raw PC-QoL data in preparation for estimation of
-health utilities. It is intended as a helper for [pcqol_utilities()], but is
+health utilities. It is intended as a helper for `pcqol_utilities()`, but is
 available for use on its' own if the user wishes.
 }
 \examples{

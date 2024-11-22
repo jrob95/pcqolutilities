@@ -82,14 +82,55 @@ pcqol_utility_out2 <- tibble::tibble(
 
 
 usethis::use_data(pcqol_recoded1,
-                  pcqol_recoded2,
-                  pcqol_utility_out,
-                  pcqol_utility_out2,
-                  overwrite = TRUE,
-                  internal = TRUE)
+  pcqol_recoded2,
+  pcqol_utility_out,
+  pcqol_utility_out2,
+  overwrite = TRUE,
+  internal = TRUE
+)
 
 usethis::use_data(pcqol_raw,
-                  pcqol_raw2,
-                  overwrite = TRUE,
-                  internal = FALSE)
+  pcqol_raw2,
+  overwrite = TRUE,
+  internal = FALSE
+)
 
+# coefficients
+coefs <- readRDS("data/gcmOnDoWbtFmodel.rda") |>
+  dplyr::mutate(
+    item = substr(attribute, 1, 5),
+    level = substr(attribute, 6, length(attribute)),
+    level_num = dplyr::case_when(
+      level == "Always" ~ 4,
+      level == "Often" ~ 3,
+      level == "Sometimes" ~ 2,
+      level == "Never" ~ 1
+    )
+  )
+
+saveRDS(coefs, "data/gcmOnDoWbtFmodelClean.rda")
+usethis::use_data(coefs,
+  overwrite = TRUE,
+  internal = TRUE
+)
+
+
+
+# make hex sticker
+p <- readRDS(file = "data-raw/hs_utils.rds") +
+  ggplot2::theme_void() +
+  ggplot2::theme_transparent() +
+  ggplot2::theme(
+    title = ggplot2::element_blank(),
+    legend.position = "none"
+  )
+
+s <- hexSticker::sticker(p,
+  package = "pcqolutilities", p_size = 12,
+  s_x = .8, s_y = .8, s_width = 1.4, s_height = 1.2,
+  h_fill = "#009FE3", h_color = "#124C7B",
+  spotlight = TRUE,
+  filename = here::here("inst/figures/baseplot.png")
+)
+s
+hexSticker::use_logo(here::here("inst/figures/baseplot.png"), geometry = "240x278", retina = TRUE)
