@@ -1,7 +1,7 @@
 Package: pcqolutilities
 Type: Package
 Title: Estimate Parent-Proxy Child Cough Specific Quality of Life Utilities
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: person("Jack", "Roberts", email = "jack.roberts@connect.qut.edu.au",
   role = c("aut", "cre"))
 URL: https://github.com/jrob95/pcqolutilities
