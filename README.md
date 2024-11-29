@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pcqolutilities
+# pcqolutilities <a href="https://github.com/jrob95/pcqolutilities"><img src="man/figures/logo.png" align="right" height="120" alt="pcqolutilities logo" /></a>
 
 <!-- badges: start -->
 
