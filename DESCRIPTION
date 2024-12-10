@@ -25,6 +25,7 @@ Imports:
     assertthat,
     dplyr,
     rlang,
+    shiny,
     tibble,
     tidyr
 Suggests: 
