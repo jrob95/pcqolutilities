@@ -9,6 +9,10 @@ shiny::shinyServer(function(input, output, session) {
     awake = numeric()
   ))
 
+  shiny::observeEvent(input$reset_button, {
+    session$reload()  # Reloads the session
+  })
+
   shiny::observeEvent(input$file_input, {
     shiny::req(input$file_input)
     ext <- tools::file_ext(input$file_input$name)
@@ -55,6 +59,34 @@ shiny::shinyServer(function(input, output, session) {
     },
     content = function(file) {
       utils::write.csv(calculated_data(), file, row.names = FALSE)
+    }
+  )
+
+  output$download_labelled_xlsx <- shiny::downloadHandler(
+    filename = function() { "labelled.xlsx" },
+    content = function(file) {
+      file.copy("www/labelled.xlsx", file)
+    }
+  )
+
+  output$download_labelled_csv <- shiny::downloadHandler(
+    filename = function() { "labelled.csv" },
+    content = function(file) {
+      file.copy("www/labelled.csv", file)
+    }
+  )
+
+  output$download_unlabelled_xlsx <- shiny::downloadHandler(
+    filename = function() { "unlabelled.xlsx" },
+    content = function(file) {
+      file.copy("www/unlabelled.xlsx", file)
+    }
+  )
+
+  output$download_unlabelled_csv <- shiny::downloadHandler(
+    filename = function() { "unlabelled.csv" },
+    content = function(file) {
+      file.copy("www/unlabelled.csv", file)
     }
   )
 })
