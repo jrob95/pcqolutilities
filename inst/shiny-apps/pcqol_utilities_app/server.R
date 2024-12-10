@@ -24,7 +24,7 @@ shiny::shinyServer(function(input, output, session) {
     }
 
     # Preprocess uploaded data to convert text labels to numeric values
-    processed_data <- preprocess_data(uploaded_data)
+    processed_data <- pcqol_preprocess_labels(uploaded_data)
     data_reactive(processed_data)
   })
 
@@ -65,28 +65,29 @@ shiny::shinyServer(function(input, output, session) {
   output$download_labelled_xlsx <- shiny::downloadHandler(
     filename = function() { "labelled.xlsx" },
     content = function(file) {
-      file.copy("www/labelled.xlsx", file)
-    }
+      file.copy("https://github.com/jrob95/pcqolutilities/blob/main/inst/extdata//labelled.xlsx", file)
+    },
+    contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   )
 
   output$download_labelled_csv <- shiny::downloadHandler(
     filename = function() { "labelled.csv" },
     content = function(file) {
-      file.copy("www/labelled.csv", file)
+      file.copy("https://github.com/jrob95/pcqolutilities/blob/main/inst/extdata//labelled.csv", file)
     }
   )
 
   output$download_unlabelled_xlsx <- shiny::downloadHandler(
     filename = function() { "unlabelled.xlsx" },
     content = function(file) {
-      file.copy("www/unlabelled.xlsx", file)
+      file.copy("https://github.com/jrob95/pcqolutilities/blob/main/inst/extdata//unlabelled.xlsx", file)
     }
   )
 
   output$download_unlabelled_csv <- shiny::downloadHandler(
     filename = function() { "unlabelled.csv" },
     content = function(file) {
-      file.copy("www/unlabelled.csv", file)
+      file.copy("https://github.com/jrob95/pcqolutilities/blob/main/inst/extdata//unlabelled.csv", file)
     }
   )
 })
