@@ -60,3 +60,10 @@ pcqol_utilities(pcqol_raw2,
 )
 ```
 
+## Using the shiny app
+If you install the package, you can use the shiny app locally for a simple, no frills interface to estimating utilities.
+
+```{r, eval=FALSE}
+run_pcqol_utilities_app()
+```
+

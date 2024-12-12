@@ -66,8 +66,7 @@ shiny::shinyServer(function(input, output, session) {
     filename = function() { "labelled.xlsx" },
     content = function(file) {
       file.copy("https://github.com/jrob95/pcqolutilities/blob/main/inst/extdata//labelled.xlsx", file)
-    },
-    contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    }
   )
 
   output$download_labelled_csv <- shiny::downloadHandler(

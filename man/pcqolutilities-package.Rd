@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Recode Parent-Proxy Child CoughSpecific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
+Recode Parent-Proxy Child Cough-specific Quality of Life questionnaire (PC-QoL) responses and estimate their respective health utilities.
 }
 \seealso{
 Useful links:
@@ -19,7 +19,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Jack Roberts \email{jack.roberts@connect.qut.edu.au}
+\strong{Maintainer}: Jack Roberts \email{jack.roberts@connect.qut.edu.au} (\href{https://orcid.org/0000-0003-3519-4725}{ORCID})
+
+Authors:
+\itemize{
+  \item Rex Parsons \email{rex.parsons94@gmail.com} (\href{https://orcid.org/0000-0002-6053-8174}{ORCID})
+}
 
 }
 \keyword{internal}
