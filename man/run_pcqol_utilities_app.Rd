@@ -13,6 +13,8 @@ A shiny app for quick and easy estimation of PC-QoL utilities.
 Launch the PCQoL Utilities Shiny App
 }
 \examples{
-# with a simple data frame
+## with a simple data frame
+\dontrun{
 run_pcqol_utilities_app()
+}
 }

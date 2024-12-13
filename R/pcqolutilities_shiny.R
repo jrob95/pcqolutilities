@@ -3,8 +3,10 @@
 #' @returns A shiny app for quick and easy estimation of PC-QoL utilities.
 #'
 #' @examples
-#' # with a simple data frame
+#' ## with a simple data frame
+#' \dontrun{
 #' run_pcqol_utilities_app()
+#' }
 #' @export
 run_pcqol_utilities_app <- function() {
   app_dir <- system.file("shiny-apps", "pcqol_utilities_app", package = "pcqolutilities")
