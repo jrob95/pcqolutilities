@@ -1,9 +1,19 @@
 Package: pcqolutilities
 Type: Package
 Title: Estimate Parent-Proxy Child Cough Specific Quality of Life Utilities
-Version: 0.1.0
-Authors@R: person("Jack", "Roberts", email = "jack.roberts@connect.qut.edu.au",
-  role = c("aut", "cre"))
+Version: 0.1.0.9000
+Authors@R: c(
+    person(given = "Jack",
+           family = "Roberts", 
+           email = "jack.roberts@connect.qut.edu.au",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-3519-4725")),
+    person(given = "Rex", 
+           family = "Parsons", 
+           role = "aut",
+           email = "rex.parsons94@gmail.com",
+           comment = c(ORCID = "0000-0002-6053-8174"))
+  )
 URL: https://github.com/jrob95/pcqolutilities
 BugReports: https://github.com/jrob95/pcqolutilities/issues
 Maintainer: The package maintainer <jack.roberts@connect.qut.edu.au>
@@ -15,6 +25,7 @@ Imports:
     assertthat,
     dplyr,
     rlang,
+    shiny,
     tibble,
     tidyr
 Suggests: 

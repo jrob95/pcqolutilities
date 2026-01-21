@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pcqolutilities
+# pcqolutilities <a href="https://github.com/jrob95/pcqolutilities"><img src="man/figures/logo.png" align="right" height="120" alt="pcqolutilities logo" /></a>
 
 <!-- badges: start -->
 
@@ -35,13 +35,13 @@ pcqol_utilities(pcqol_raw)
 #> # A tibble: 7 × 7
 #>   upset awake leave leada scare overp utility
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
-#> 1     1     1     1     1     1     1   1    
-#> 2     2     2     2     2     2     2   0.967
-#> 3     3     3     3     3     3     3   0.861
+#> 1     1     1     1     1     1     1   0.215
+#> 2     2     2     2     2     2     2   0.523
+#> 3     3     3     3     3     3     3   0.600
 #> 4     4     4     4     4     4     4   0.793
-#> 5     5     5     5     5     5     5   0.600
-#> 6     6     6     6     6     6     6   0.523
-#> 7     7     7     7     7     7     7   0.215
+#> 5     5     5     5     5     5     5   0.861
+#> 6     6     6     6     6     6     6   0.967
+#> 7     7     7     7     7     7     7   1
 ```
 
 Or maybe you need to specify which columns match the PC-QoL items
@@ -63,11 +63,20 @@ pcqol_utilities(pcqol_raw2,
 #> # A tibble: 7 × 7
 #>     ups   awa   lwo   lnl   sca   ove utility
 #>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
-#> 1     1     1     1     1     1     1   1    
-#> 2     2     2     2     2     2     2   0.967
-#> 3     3     3     3     3     3     3   0.861
+#> 1     1     1     1     1     1     1   0.215
+#> 2     2     2     2     2     2     2   0.523
+#> 3     3     3     3     3     3     3   0.600
 #> 4     4     4     4     4     4     4   0.793
-#> 5     5     5     5     5     5     5   0.600
-#> 6     6     6     6     6     6     6   0.523
-#> 7     7     7     7     7     7     7   0.215
+#> 5     5     5     5     5     5     5   0.861
+#> 6     6     6     6     6     6     6   0.967
+#> 7     7     7     7     7     7     7   1
+```
+
+## Using the shiny app
+
+If you install the package, you can use the shiny app locally for a
+simple, no frills interface to estimating utilities.
+
+``` r
+run_pcqol_utilities_app()
 ```

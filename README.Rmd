@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# pcqolutilities
+# pcqolutilities <a href="https://github.com/jrob95/pcqolutilities"><img src="man/figures/logo.png" align="right" height="120" alt="pcqolutilities logo" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -58,5 +58,12 @@ pcqol_utilities(pcqol_raw2,
     awake = "awa"
   )
 )
+```
+
+## Using the shiny app
+If you install the package, you can use the shiny app locally for a simple, no frills interface to estimating utilities.
+
+```{r, eval=FALSE}
+run_pcqol_utilities_app()
 ```
 
